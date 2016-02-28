@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+body {
+  position: relative;
+  }
+
+
+#count {
+  width:50px;
+  height:50px;
+  position:absolute;
+  border:5px ridge blue;
+  text-align:center;
+  font-size:2em;
+}
+
+
+.ball {
+  border-radius:50%;
+  position:absolute;
+   }
+
+#box {
+  width:1000px;
+  height:1000px;
+  border: 20px solid green;
+   
+}
+</style>
+</head>
+<body onLoad="init()";>
+<div id="box">
+<div class="ball_1 ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  
+</div>    
+  <div id="count"></div>
+  
+
+<script id="jsbin-javascript">
+var balls = document.getElementsByClassName("ball");
+
+var counter = document.getElementById("count").innerHTML=balls.length;
+var height = document.getElementById("box").clientHeight;
+var width = document.getElementById("box").clientWidth;
+
+console.log(height);
+console.log(width);
+
+function ballMove(ball) {
+  var x=0;
+  var y=0;
+  var dx=-Math.floor(Math.random()*10);
+  var dy=-Math.floor(Math.random()*5);
+  var id = setInterval(frame,70);
+      
+  function frame() {
+     
+      ball.style.top = x++ + 'px'; 
+      ball.style.left = y++ + 'px';
+      
+      if( x<(0-dx) || x>(height-dx)) {dx=-dx;}
+      if( y<(0-dy) || y>(width-dy))  {dy=-dy;}
+      x+=dx; 
+      y+=dy; 
+  }
+  
+}
+
+
+
+function init(){
+    
+  for (var i=0,j=1; i<=counter;i++,j++){
+    balls[i].style.background = "radial-gradient(circle at 20px 15px, rgb(0," + Math.floor(255-42.5*j*0.5) + "," + Math.floor(255-102.5*j*0.2) + "), #000)";
+    balls[i].style.width= 75*j*0.3 + "px";
+    balls[i].style.height=75*j*0.3 + "px";
+    ballMove(balls[i]);
+    balls[i].addEventListener("click", delBall);
+  }
+    
+}
+
+function delBall() {
+  document.getElementById("box").removeChild(this);
+  document.getElementById("count").innerHTML=--counter;
+}
+</script>
+
+
+<script id="jsbin-source-css" type="text/css">body {
+  position: relative;
+  }
+
+
+#count {
+  width:50px;
+  height:50px;
+  position:absolute;
+  border:5px ridge blue;
+  text-align:center;
+  font-size:2em;
+}
+
+
+.ball {
+  border-radius:50%;
+  position:absolute;
+   }
+
+#box {
+  width:1000px;
+  height:1000px;
+  border: 20px solid green;
+   
+}</script>
+
+<script id="jsbin-source-javascript" type="text/javascript">var balls = document.getElementsByClassName("ball");
+
+var counter = document.getElementById("count").innerHTML=balls.length;
+var height = document.getElementById("box").clientHeight;
+var width = document.getElementById("box").clientWidth;
+
+console.log(height);
+console.log(width);
+
+function ballMove(ball) {
+  var x=0;
+  var y=0;
+  var dx=-Math.floor(Math.random()*10);
+  var dy=-Math.floor(Math.random()*5);
+  var id = setInterval(frame,70);
+      
+  function frame() {
+     
+      ball.style.top = x++ + 'px'; 
+      ball.style.left = y++ + 'px';
+      
+      if( x<(0-dx) || x>(height-dx)) {dx=-dx;}
+      if( y<(0-dy) || y>(width-dy))  {dy=-dy;}
+      x+=dx; 
+      y+=dy; 
+  }
+  
+}
+
+
+
+function init(){
+    
+  for (var i=0,j=1; i<=counter;i++,j++){
+    balls[i].style.background = "radial-gradient(circle at 20px 15px, rgb(0," + Math.floor(255-42.5*j*0.5) + "," + Math.floor(255-102.5*j*0.2) + "), #000)";
+    balls[i].style.width= 75*j*0.3 + "px";
+    balls[i].style.height=75*j*0.3 + "px";
+    ballMove(balls[i]);
+    balls[i].addEventListener("click", delBall);
+  }
+    
+}
+
+function delBall() {
+  document.getElementById("box").removeChild(this);
+  document.getElementById("count").innerHTML=--counter;
+}
+
+</script></body>
+</html>
