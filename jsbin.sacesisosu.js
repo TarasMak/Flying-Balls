@@ -8,19 +8,19 @@ console.log(height);
 console.log(width);
 
 function ballMove(ball) {
-  var x=0;
-  var y=0;
-  var dx=-Math.floor(Math.random()*10);
-  var dy=-Math.floor(Math.random()*5);
-  var id = setInterval(frame,70);
+  var x=Math.floor(Math.random()*height-3);
+  var y=Math.floor(Math.random()*width-3);
+  var dx=Math.floor(Math.random()*2)-3;
+  var dy=Math.floor(Math.random()*2)-3;
+  setInterval(frame,10);
       
   function frame() {
-     
+      ball.style.background = "radial-gradient(circle at 30px 35px, rgb("+Math.floor(55+0.5*y*x-y)+"," + Math.floor(255-42.5*x/y) + "," + Math.floor(155-42.5*y/x) + "), #000)";
       ball.style.top = x++ + 'px'; 
       ball.style.left = y++ + 'px';
       
       if( x<(0-dx) || x>(height-dx)) {dx=-dx;}
-      if( y<(0-dy) || y>(width-dy))  {dy=-dy;}
+      if( y<(0-dy) || y>(width-dy)) {dy=-dy;}
       x+=dx; 
       y+=dy; 
   }
@@ -32,9 +32,9 @@ function ballMove(ball) {
 function init(){
     
   for (var i=0,j=1; i<=counter;i++,j++){
-    balls[i].style.background = "radial-gradient(circle at 20px 15px, rgb(0," + Math.floor(255-42.5*j*0.5) + "," + Math.floor(255-102.5*j*0.2) + "), #000)";
-    balls[i].style.width= 75*j*0.3 + "px";
-    balls[i].style.height=75*j*0.3 + "px";
+    
+    balls[i].style.width= 85*j*0.3 + "px";
+    balls[i].style.height=85*j*0.3 + "px";
     ballMove(balls[i]);
     balls[i].addEventListener("click", delBall);
   }
